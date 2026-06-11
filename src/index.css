@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  /* System Font Families */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  --font-script: 'Courier Prime', Courier, monospace;
+
+  /* Global Wallpapers as CSS Mesh Gradients */
+  --wp-glass-waves-dark: radial-gradient(at 0% 0%, #1e1b4b 0px, transparent 50%), 
+                          radial-gradient(at 50% 0%, #0f172a 0px, transparent 50%), 
+                          radial-gradient(at 100% 0%, #311042 0px, transparent 50%),
+                          radial-gradient(at 0% 100%, #020617 0px, transparent 50%),
+                          radial-gradient(at 100% 100%, #0f172a 0px, transparent 50%);
+                          
+  --wp-glass-waves-light: radial-gradient(at 0% 0%, #e0e7ff 0px, transparent 50%), 
+                           radial-gradient(at 50% 0%, #f1f5f9 0px, transparent 50%), 
+                           radial-gradient(at 100% 0%, #fae8ff 0px, transparent 50%),
+                           radial-gradient(at 0% 100%, #f8fafc 0px, transparent 50%),
+                           radial-gradient(at 100% 100%, #f1f5f9 0px, transparent 50%);
+
+  --wp-aurora-dark: radial-gradient(at 20% 20%, #064e3b 0px, transparent 50%),
+                    radial-gradient(at 80% 40%, #111827 0px, transparent 50%),
+                    radial-gradient(at 40% 80%, #022c22 0px, transparent 50%),
+                    radial-gradient(at 10% 90%, #030712 0px, transparent 50%);
+
+  --wp-aurora-light: radial-gradient(at 20% 20%, #d1fae5 0px, transparent 50%),
+                     radial-gradient(at 80% 40%, #f3f4f6 0px, transparent 50%),
+                     radial-gradient(at 40% 80%, #a7f3d0 0px, transparent 50%),
+                     radial-gradient(at 10% 90%, #f9fafb 0px, transparent 50%);
+
+  --wp-abstract-dark: radial-gradient(circle at 30% 30%, #172554 0%, transparent 60%),
+                       radial-gradient(circle at 70% 70%, #0f172a 0%, transparent 60%);
+
+  --wp-abstract-light: radial-gradient(circle at 30% 30%, #eff6ff 0%, transparent 60%),
+                        radial-gradient(circle at 70% 70%, #f8fafc 0%, transparent 60%);
+
+  --wp-pure-dark: #000000;
+  --wp-pure-light: #ffffff;
+}
+
+/* Light Mode Tokens */
+.theme-light {
+  --bg-primary: #ffffff;
+  --bg-desktop: var(--wp-glass-waves-light);
+  --panel-bg: rgba(255, 255, 255, 0.45);
+  --panel-bg-solid: rgba(255, 255, 255, 0.95);
+  --panel-border: rgba(255, 255, 255, 0.5);
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #a1a1a6;
+  --accent-color: #0071e3;
+  --accent-light: rgba(0, 113, 227, 0.1);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.08);
+  --glow-reflection: 0 0 0 1px rgba(255, 255, 255, 0.5);
+  --card-hover-bg: rgba(255, 255, 255, 0.6);
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+}
+
+/* Dark Mode Tokens */
+.theme-dark {
+  --bg-primary: #000000;
+  --bg-desktop: var(--wp-glass-waves-dark);
+  --panel-bg: rgba(0, 0, 0, 0.55);
+  --panel-bg-solid: rgba(18, 18, 18, 0.95);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #f5f5f7;
+  --text-secondary: #86868b;
+  --text-tertiary: #48484a;
+  --accent-color: #2997ff;
+  --accent-light: rgba(41, 151, 255, 0.15);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.6);
+  --glow-reflection: 0 0 0 1px rgba(255, 255, 255, 0.15), 0 0 20px rgba(255, 255, 255, 0.05);
+  --card-hover-bg: rgba(255, 255, 255, 0.05);
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+}
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbars styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--panel-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Basic Layouts */
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.desktop-container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background: var(--bg-desktop);
+  background-size: cover;
+  background-position: center;
+  transition: background 1s ease, color 0.5s ease;
+  overflow: hidden;
+}
+
+/* Glassmorphism Styles */
+.glass {
+  background: var(--panel-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--panel-border);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--border-radius-md);
+  transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), border 0.3s ease;
+}
+
+.glass-solid {
+  background: var(--panel-bg-solid);
+  border: 1px solid var(--panel-border);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--border-radius-md);
+}
+
+.glass-card {
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--border-radius-md);
+  padding: 16px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  background: var(--card-hover-bg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Buttons and Inputs */
+.glass-button {
+  background: var(--panel-border);
+  color: var(--text-primary);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--border-radius-sm);
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-button:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+  transform: scale(1.02);
+}
+
+.glass-button-primary {
+  background: var(--accent-color);
+  color: #ffffff;
+  border: 1px solid var(--accent-color);
+}
+.glass-button-primary:hover {
+  background: var(--accent-color);
+  opacity: 0.9;
+  color: #ffffff;
+  border-color: var(--accent-color);
+}
+
+.glass-input {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--border-radius-sm);
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  outline: none;
+  transition: all 0.2s ease;
+}
+.theme-dark .glass-input {
+  background: rgba(255, 255, 255, 0.05);
+}
+.glass-input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+/* Animations */
+@keyframes boot-fade {
+  0% { opacity: 0; transform: scale(0.97); filter: blur(5px); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+@keyframes progress-run {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+.animate-boot {
+  animation: boot-fade 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Desktop App layout utilities */
+.window-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.window-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.no-select {
+  user-select: none;
+}
+.clickable {
+  cursor: pointer;
+}
+
+/* Dropdown Menu Styles */
+.dropdown-item {
+  padding: 6px 16px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 12px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dropdown-item:hover {
+  background: var(--accent-color);
+  color: #ffffff !important;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: var(--panel-border);
+  margin: 4px 0;
+}
