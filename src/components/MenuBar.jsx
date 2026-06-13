@@ -325,7 +325,7 @@ export default function MenuBar({ onToggleControlCenter, onToggleNotifications, 
             Go
           </span>
           {activeMenu === 'go' && (
-            <div className="glass-solid dropdown-menu-container" style={{ ...dropdownMenuContainerStyle, width: '220px' }}>
+            <div className="glass-solid dropdown-menu-container" style={{ ...dropdownMenuContainerStyle, width: '230px', maxHeight: '400px', overflowY: 'auto' }}>
               <div style={{ padding: '4px 16px', fontSize: '9px', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Ecosystem Apps</div>
               <div className="dropdown-item" onClick={() => { openWindow('arkon', 'ArKon App'); setActiveMenu(null); }}>
                 <span>🚀 ArKon Assistant</span>
@@ -355,6 +355,50 @@ export default function MenuBar({ onToggleControlCenter, onToggleNotifications, 
               </div>
               <div className="dropdown-item" onClick={() => { openWindow('settings', 'System Settings'); setActiveMenu(null); }}>
                 <span>⚙️ System Settings</span>
+              </div>
+              <div className="dropdown-divider" />
+              <div style={{ padding: '4px 16px', fontSize: '9px', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>System Utilities</div>
+              <div className="dropdown-item" onClick={() => { openWindow('calculator', 'ArCalc'); setActiveMenu(null); }}>
+                <span>🧮 ArCalc</span>
+              </div>
+              <div className="dropdown-item" onClick={() => { openWindow('system-monitor', 'ArMon'); setActiveMenu(null); }}>
+                <span>📊 ArMon</span>
+              </div>
+              <div className="dropdown-item" onClick={() => { openWindow('calendar-app', 'ArCal'); setActiveMenu(null); }}>
+                <span>📅 ArCal</span>
+              </div>
+              <div className="dropdown-item" onClick={() => { openWindow('system-cleaner', 'ArClean'); setActiveMenu(null); }}>
+                <span>🗑️ ArClean</span>
+              </div>
+              <div className="dropdown-item" onClick={() => { openWindow('retro-terminal', 'ArTerm'); setActiveMenu(null); }}>
+                <span>🐚 ArTerm</span>
+              </div>
+              <div className="dropdown-item" onClick={() => { openWindow('code-sandbox', 'ArPlay'); setActiveMenu(null); }}>
+                <span>⚡ ArPlay</span>
+              </div>
+              <div className="dropdown-item" onClick={() => { openWindow('markdown-notepad', 'ArNote'); setActiveMenu(null); }}>
+                <span>📝 ArNote</span>
+              </div>
+              <div className="dropdown-item" onClick={() => { openWindow('lofi-player', 'ArTune'); setActiveMenu(null); }}>
+                <span>🎵 ArTune</span>
+              </div>
+              <div className="dropdown-item" onClick={() => { openWindow('weather-app', 'ArCast'); setActiveMenu(null); }}>
+                <span>🌤️ ArCast</span>
+              </div>
+              <div className="dropdown-item" onClick={() => { openWindow('pixel-paint', 'ArDraw'); setActiveMenu(null); }}>
+                <span>🎨 ArDraw</span>
+              </div>
+              <div className="dropdown-item" onClick={() => { openWindow('wallpapers-hub', 'ArWall'); setActiveMenu(null); }}>
+                <span>📸 ArWall</span>
+              </div>
+              <div className="dropdown-item" onClick={() => { openWindow('pomodoro-timer', 'ArFocus'); setActiveMenu(null); }}>
+                <span>⏱️ ArFocus</span>
+              </div>
+              <div className="dropdown-item" onClick={() => { openWindow('tech-news', 'ArNews'); setActiveMenu(null); }}>
+                <span>📰 ArNews</span>
+              </div>
+              <div className="dropdown-item" onClick={() => { openWindow('sticky-notes', 'ArMemo'); setActiveMenu(null); }}>
+                <span>📌 ArMemo</span>
               </div>
             </div>
           )}

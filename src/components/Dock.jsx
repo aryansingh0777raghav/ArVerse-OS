@@ -3,12 +3,29 @@ import { useAppState } from '../contexts/AppStateContext';
 import { useTheme } from '../contexts/ThemeContext';
 
 export default function Dock() {
-  const { openWindows, openWindow } = useAppState();
+  const { openWindows, openWindow, setIsLaunchpadOpen } = useAppState();
   const { theme, focusMode } = useTheme();
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const dockRef = useRef(null);
 
   const apps = [
+    { 
+      id: 'launchpad', 
+      name: 'Launchpad', 
+      color: 'linear-gradient(135deg, #3b82f6, #06b6d4)',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+          <rect x="3" y="3" width="7" height="7" rx="1.5" />
+          <rect x="14" y="3" width="7" height="7" rx="1.5" />
+          <rect x="3" y="14" width="7" height="7" rx="1.5" />
+          <rect x="14" y="14" width="7" height="7" rx="1.5" />
+        </svg>
+      )
+    },
+    { 
+      id: 'divider-launchpad', 
+      isDivider: true 
+    },
     { 
       id: 'arkon', 
       name: 'ArKon App', 
@@ -91,7 +108,11 @@ export default function Dock() {
   ];
 
   const handleAppClick = (appId, name) => {
-    openWindow(appId, name);
+    if (appId === 'launchpad') {
+      setIsLaunchpadOpen(prev => !prev);
+    } else {
+      openWindow(appId, name);
+    }
   };
 
   const isAppRunning = (appId) => {

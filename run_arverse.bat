@@ -31,7 +31,7 @@ if not defined CHROME_PATH if exist "%LocalAppData%\Google\Chrome\Application\ch
 
 if defined CHROME_PATH (
     echo [APP] Launching ArVerse OS in Chrome App Mode...
-    start "" "%CHROME_PATH%" --app=http://localhost:3000
+    start "" "%CHROME_PATH%" --app=http://localhost:3000 --start-fullscreen
 ) else (
     echo [APP] Chrome not found. Launching in Microsoft Edge App Mode...
     set "EDGE_PATH="
@@ -39,9 +39,9 @@ if defined CHROME_PATH (
     if not defined EDGE_PATH if exist "C:\Program Files\Microsoft\Edge\Application\msedge.exe" set "EDGE_PATH=C:\Program Files\Microsoft\Edge\Application\msedge.exe"
     
     if defined EDGE_PATH (
-        start "" "%EDGE_PATH%" --app=http://localhost:3000
+        start "" "%EDGE_PATH%" --app=http://localhost:3000 --start-fullscreen
       ) else (
-        start "" msedge.exe --app=http://localhost:3000
+        start "" msedge.exe --app=http://localhost:3000 --start-fullscreen
     )
 )
 

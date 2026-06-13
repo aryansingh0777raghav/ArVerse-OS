@@ -84,6 +84,20 @@ export default function SpotlightSearch({ isOpen, onClose }) {
     { id: 'cmd-theme', title: 'Toggle Theme Light/Dark', category: 'Commands', action: () => toggleTheme() },
     { id: 'cmd-focus', title: 'Toggle Distraction-Free Focus Mode', category: 'Commands', action: () => setFocusMode(prev => !prev) },
     { id: 'cmd-settings', title: 'Open System Settings', category: 'Commands', action: () => openWindow('settings', 'System Settings') },
+    { id: 'cmd-calculator', title: 'Open ArCalc Calculator', category: 'Commands', action: () => openWindow('calculator', 'ArCalc') },
+    { id: 'cmd-sysmon', title: 'Open ArMon System Monitor Diagnostics', category: 'Commands', action: () => openWindow('system-monitor', 'ArMon') },
+    { id: 'cmd-calendar', title: 'Open ArCal Calendar Scheduler', category: 'Commands', action: () => openWindow('calendar-app', 'ArCal') },
+    { id: 'cmd-cleaner', title: 'Open ArClean System Cleaner Optimizer', category: 'Commands', action: () => openWindow('system-cleaner', 'ArClean') },
+    { id: 'cmd-terminal', title: 'Open ArTerm Retro UNIX Terminal Shell', category: 'Commands', action: () => openWindow('retro-terminal', 'ArTerm') },
+    { id: 'cmd-sandbox', title: 'Open ArPlay Code Sandbox Playground', category: 'Commands', action: () => openWindow('code-sandbox', 'ArPlay') },
+    { id: 'cmd-notepad', title: 'Open ArNote Markdown Notepad Editor', category: 'Commands', action: () => openWindow('markdown-notepad', 'ArNote') },
+    { id: 'cmd-lofi', title: 'Open ArTune Lofi Music Player', category: 'Commands', action: () => openWindow('lofi-player', 'ArTune') },
+    { id: 'cmd-weather', title: 'Open ArCast Weather Forecast Station', category: 'Commands', action: () => openWindow('weather-app', 'ArCast') },
+    { id: 'cmd-paint', title: 'Open ArDraw Pixel Paint Studio', category: 'Commands', action: () => openWindow('pixel-paint', 'ArDraw') },
+    { id: 'cmd-wallpapers', title: 'Open ArWall Wallpapers Hub Gallery', category: 'Commands', action: () => openWindow('wallpapers-hub', 'ArWall') },
+    { id: 'cmd-pomodoro', title: 'Open ArFocus Pomodoro Timer Chronometer', category: 'Commands', action: () => openWindow('pomodoro-timer', 'ArFocus') },
+    { id: 'cmd-news', title: 'Open ArNews Tech News Feeds Aggregator', category: 'Commands', action: () => openWindow('tech-news', 'ArNews') },
+    { id: 'cmd-sticky', title: 'Open ArMemo Sticky Notes Board', category: 'Commands', action: () => openWindow('sticky-notes', 'ArMemo') },
   ];
 
   // Map files and vault entries to standard searchable list

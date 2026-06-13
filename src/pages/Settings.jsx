@@ -8,7 +8,9 @@ export default function Settings() {
     wallpaper, selectWallpaper,
     focusMode, setFocusMode,
     profileName, setProfileName,
-    profileAvatar, setProfileAvatar
+    profileAvatar, setProfileAvatar,
+    pinEnabled, setPinEnabled,
+    pinCode, setPinCode
   } = useTheme();
 
   const { vaultEntries, files, activities, addActivity } = useAppState();
@@ -182,6 +184,77 @@ export default function Settings() {
             <button className="glass-button" onClick={toggleTheme} style={{ fontSize: '11px' }}>
               {theme === 'dark' ? '🌙 Dark Mode' : '☀️ Light Mode'}
             </button>
+          </div>
+        </div>
+
+        {/* Security Settings */}
+        <div style={sectionStyle}>
+          <h4 style={sectionHeaderStyle}>Security & Privacy</h4>
+          <div className="glass-card" style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {/* PIN Enable Toggle */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div>
+                <strong>Lock Screen Passcode (PIN)</strong>
+                <div style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>Require a 4-digit PIN code to unlock the screen</div>
+              </div>
+              <button 
+                className="glass-button" 
+                onClick={() => {
+                  if (pinEnabled) {
+                    setPinEnabled(false);
+                    setPinCode('');
+                  } else {
+                    setPinEnabled(true);
+                  }
+                }} 
+                style={{ fontSize: '11px', fontWeight: '600', color: pinEnabled ? '#ff3b30' : 'var(--text-primary)' }}
+              >
+                {pinEnabled ? '🔴 Disable PIN Lock' : '🟢 Enable PIN Lock'}
+              </button>
+            </div>
+
+            {/* PIN Code Configuration */}
+            {pinEnabled && (
+              <>
+                <div style={{ height: '1px', backgroundColor: 'var(--panel-border)' }} />
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
+                  <div>
+                    <strong>Set 4-Digit Passcode</strong>
+                    <div style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>Enter a passcode of exactly 4 numbers</div>
+                  </div>
+                  
+                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                    <input 
+                      type="password"
+                      maxLength={4}
+                      placeholder="PIN"
+                      value={pinCode}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        if (/^\d*$/.test(val)) {
+                          setPinCode(val);
+                        }
+                      }}
+                      className="glass-input" 
+                      style={{ 
+                        fontSize: '14px', 
+                        padding: '6px 12px', 
+                        width: '100px', 
+                        borderRadius: '8px', 
+                        textAlign: 'center',
+                        letterSpacing: '4px',
+                        fontWeight: '700'
+                      }}
+                    />
+                    {pinCode.length === 4 ? (
+                      <span style={{ fontSize: '12px', color: '#34c759', fontWeight: '600' }}>✓ Saved</span>
+                    ) : (
+                      <span style={{ fontSize: '11px', color: '#ff9500' }}>{4 - pinCode.length} digits left</span>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
 

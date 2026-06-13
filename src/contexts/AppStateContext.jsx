@@ -35,6 +35,7 @@ const initialVault = [
 export const AppStateProvider = ({ children }) => {
   const [activeWorkspace, setActiveWorkspace] = useState('Personal');
   const [openWindows, setOpenWindows] = useState([]);
+  const [isLaunchpadOpen, setIsLaunchpadOpen] = useState(false);
   const [vaultEntries, setVaultEntries] = useState(() => {
     const saved = localStorage.getItem('arverse_vault');
     return saved ? JSON.parse(saved) : initialVault;
@@ -294,7 +295,9 @@ export const AppStateProvider = ({ children }) => {
         pinnedItems,
         setPinnedItems,
         portStatuses,
-        scanPorts
+        scanPorts,
+        isLaunchpadOpen,
+        setIsLaunchpadOpen
       }}
     >
       {children}

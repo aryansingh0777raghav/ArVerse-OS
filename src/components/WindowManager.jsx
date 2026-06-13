@@ -9,6 +9,22 @@ import DeveloperConsole from '../pages/DeveloperConsole';
 import FilesHub from '../pages/FilesHub';
 import Settings from '../pages/Settings';
 
+// Modular Apps Imports
+import Calculator from '../pages/apps/Calculator';
+import SystemMonitor from '../pages/apps/SystemMonitor';
+import CalendarApp from '../pages/apps/CalendarApp';
+import SystemCleaner from '../pages/apps/SystemCleaner';
+import RetroTerminal from '../pages/apps/RetroTerminal';
+import CodeSandbox from '../pages/apps/CodeSandbox';
+import MarkdownNotepad from '../pages/apps/MarkdownNotepad';
+import LofiPlayer from '../pages/apps/LofiPlayer';
+import WeatherApp from '../pages/apps/WeatherApp';
+import PixelPaint from '../pages/apps/PixelPaint';
+import WallpapersHub from '../pages/apps/WallpapersHub';
+import PomodoroTimer from '../pages/apps/PomodoroTimer';
+import TechNewsReader from '../pages/apps/TechNewsReader';
+import StickyNotes from '../pages/apps/StickyNotes';
+
 export default function WindowManager() {
   const { 
     openWindows, 
@@ -173,6 +189,34 @@ export default function WindowManager() {
         return <DeveloperConsole />;
       case 'settings':
         return <Settings />;
+      case 'calculator':
+        return <Calculator />;
+      case 'system-monitor':
+        return <SystemMonitor />;
+      case 'calendar-app':
+        return <CalendarApp />;
+      case 'system-cleaner':
+        return <SystemCleaner />;
+      case 'retro-terminal':
+        return <RetroTerminal />;
+      case 'code-sandbox':
+        return <CodeSandbox />;
+      case 'markdown-notepad':
+        return <MarkdownNotepad />;
+      case 'lofi-player':
+        return <LofiPlayer />;
+      case 'weather-app':
+        return <WeatherApp />;
+      case 'pixel-paint':
+        return <PixelPaint />;
+      case 'wallpapers-hub':
+        return <WallpapersHub />;
+      case 'pomodoro-timer':
+        return <PomodoroTimer />;
+      case 'tech-news':
+        return <TechNewsReader />;
+      case 'sticky-notes':
+        return <StickyNotes />;
       default:
         return (
           <div style={{ padding: '24px', color: 'var(--text-secondary)' }}>

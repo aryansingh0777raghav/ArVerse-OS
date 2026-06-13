@@ -13,6 +13,7 @@ import NotificationCenter from './components/NotificationCenter';
 import AppSwitcher from './components/AppSwitcher';
 import SpotlightSearch from './components/SpotlightSearch';
 import WindowManager from './components/WindowManager';
+import Launchpad from './components/Launchpad';
 
 // Background Page Workspace
 import Dashboard from './pages/Dashboard';
@@ -28,7 +29,7 @@ function OSShell() {
     brightness 
   } = useTheme();
 
-  const { openWindows } = useAppState();
+  const { openWindows, isLaunchpadOpen, setIsLaunchpadOpen } = useAppState();
 
   const [ccOpen, setCcOpen] = useState(false);
   const [ncOpen, setNcOpen] = useState(false);
@@ -44,16 +45,29 @@ function OSShell() {
         setSpotlightOpen(prev => !prev);
         setCcOpen(false);
         setNcOpen(false);
+        setIsLaunchpadOpen(false);
       }
 
       // Alt + Q (Browser safe switcher fallback instead of Alt+Tab)
       if (e.altKey && (e.key === 'q' || e.key === 'Tab')) {
         e.preventDefault();
         setSwitcherOpen(true);
+        setIsLaunchpadOpen(false);
       }
 
       // Escape key closes overlays
       if (e.key === 'Escape') {
+        setSpotlightOpen(false);
+        setCcOpen(false);
+        setNcOpen(false);
+        setSwitcherOpen(false);
+        setIsLaunchpadOpen(false);
+      }
+
+      // F4 key toggles Launchpad
+      if (e.key === 'F4') {
+        e.preventDefault();
+        setIsLaunchpadOpen(prev => !prev);
         setSpotlightOpen(false);
         setCcOpen(false);
         setNcOpen(false);
@@ -63,7 +77,7 @@ function OSShell() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [setIsLaunchpadOpen]);
 
   // Sleep Mode Wake loop
   useEffect(() => {
@@ -143,6 +157,9 @@ function OSShell() {
 
       {/* Alt + Q Switcher Modal */}
       <AppSwitcher isOpen={switcherOpen} onClose={() => setSwitcherOpen(false)} />
+
+      {/* Fullscreen Launchpad Overlay */}
+      <Launchpad isOpen={isLaunchpadOpen} onClose={() => setIsLaunchpadOpen(false)} />
 
       {/* Desktop App Windows */}
       <WindowManager />

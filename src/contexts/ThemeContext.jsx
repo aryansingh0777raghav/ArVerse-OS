@@ -26,6 +26,12 @@ export const ThemeProvider = ({ children }) => {
   const [profileName, setProfileName] = useState(() => {
     return localStorage.getItem('arverse_profile_name') || 'Aryan';
   });
+  const [pinEnabled, setPinEnabled] = useState(() => {
+    return localStorage.getItem('arverse_pin_enabled') === 'true';
+  });
+  const [pinCode, setPinCode] = useState(() => {
+    return localStorage.getItem('arverse_pin_code') || '';
+  });
 
   useEffect(() => {
     localStorage.setItem('arverse_profile_avatar', profileAvatar);
@@ -34,6 +40,14 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('arverse_profile_name', profileName);
   }, [profileName]);
+
+  useEffect(() => {
+    localStorage.setItem('arverse_pin_enabled', pinEnabled ? 'true' : 'false');
+  }, [pinEnabled]);
+
+  useEffect(() => {
+    localStorage.setItem('arverse_pin_code', pinCode);
+  }, [pinCode]);
 
   // Sync theme changes to DOM class list
   useEffect(() => {
@@ -111,7 +125,11 @@ export const ThemeProvider = ({ children }) => {
         profileAvatar,
         setProfileAvatar,
         profileName,
-        setProfileName
+        setProfileName,
+        pinEnabled,
+        setPinEnabled,
+        pinCode,
+        setPinCode
       }}
     >
       {children}
